@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: header"></head>
+
+<body>
+
+<div th:replace="layouts :: navigation"></div>
+	
+	<br>
+
+<div class="container"> <!-- container -->
+	<h4>პროექტის დამატება</h4>
+	<hr>
+
+
+	<form th:action="@{/projects/save}" th:object="${project}" method="POST">
+		<div class="input-field">
+			<input type="text" id="name" th:field="*{name}">
+			<label class="" for="name"> სახელი</label>
+		</div>
+
+		<div class="input-field">
+			<select th:field="${project.stage}">
+				<option value="" disabled selected>Choose your option</option>
+				<option th:value="NOTSTARTED"> არ დაუწყია</option>
+				<option th:value="INPROGRESS"> პროცესში</option>
+				<option th:value="COMPLETED"> დასრულებული</option>
+			</select>
+			<label>აირჩიეთ</label>
+		</div>
+
+		<div class="input-field">
+			<textarea id="textarea" class="materialize-textarea" th:field="${project.description}"></textarea>
+			<label class="" for="textarea">აღწერა</label>
+		</div>
+
+		<div class="input-field">
+			<select th:field="*{employees}" multiple="">
+				<option th:each = "employee : ${allEmployees}"
+						th:value = "${employee.employeeId}"
+						th:text = "${employee.firstName}">
+				</option>
+			</select>
+			<label>თანამშრომლები </label>
+		</div>
+
+
+		<div class="row">
+			<div class="col m6 s12">
+				<div class="input-field">
+					<input id="startdate" type="text" class="datepicker" th:field="${project.startDate}">
+					<label class="" for="startdate">დასაწყისი</label>
+				</div>
+			</div>
+			<div class="col m6 s12">
+				<div class="input-field">
+					<input id="enddate" type="text" class="datepicker" th:field="${project.endDate}">
+					<label class="" for="enddate">დასასრული</label>
+				</div>
+			</div>
+		</div>
+
+
+		<script type="text/javascript">
+			$('#dp3').datepicker();
+			$('#dp4').datepicker();
+		</script>
+
+		<button class="btn blue" type="submit">შენახვა</button>
+	</form>
+
+
+
+</div>
+<div th:replace="layouts:: footer"></div>
+</body>
+
+</html>

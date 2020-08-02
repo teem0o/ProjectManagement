@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head th:fragment="header">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<!-- font awesome -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+		<!--Import Google Icon Font-->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<!-- Compiled and minified CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+		<title>Project</title>
+	</head>
+
+
+	<div th:fragment="navigation">
+		<nav>
+			<div class="nav-wrapper blue">
+				<a th:href="@{/}" class="brand-logo">Project IO</a>
+				<a href="" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+				<ul class="right hide-on-med-and-down">
+					<li><a th:href="@{/}">მთავარი</a></li>
+					<li><a th:href="@{/employees}">თანამშრომლები</a></li>
+					<li><a th:href="@{/projects}">პროექტები</a></li>
+				</ul>
+			</div>
+		</nav>
+		<ul class="sidenav" id="mobile-demo">
+			<li><a th:href="@{/}">მთავარი</a></li>
+			<li><a th:href="@{/employees}">თანამშრომლები</a></li>
+			<li><a th:href="@{/projects}">პროექტები</a></li>
+		</ul>
+	</div>
+
+
+		<div th:fragment="footer">
+			<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+			<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+			<script>
+				$(document).ready(function(){
+
+					$('.sidenav').sidenav();
+					$('.materialboxed').materialbox();
+					$('.parallax').parallax();
+					$('.tabs').tabs();
+					$('.datepicker').datepicker({
+						disableWeekends: true,
+						yearRange: 1
+					});
+					$('.tooltipped').tooltip();
+					$('.scrollspy').scrollSpy();
+					$('select').formSelect();
+
+				});
+			</script>
+		</div>
+	
+	
+	
+</html>

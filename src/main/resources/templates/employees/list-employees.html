@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head th:replace="layouts :: header"></head>
+
+	<body>
+
+	<div th:replace="layouts :: navigation"></div>
+
+	<div class="container"> <!-- container -->
+		<h4>თანამშრომლების სია</h4>
+		<hr>
+		<a th:href="@{/employees/new}" class="btn blue">დამატება</a>
+
+		<table class="highlight">
+			<thead>
+			<tr>
+				<th>სახელი</th>
+				<th>გვარი</th>
+				<th>ფოსტა</th>
+				<th>ქმედება</th>
+			</tr>
+			</thead>
+
+			<tbody>
+			<tr th:each="aEmployee : ${employees}">
+				<td th:text="${aEmployee.firstName}"/>
+				<td th:text="${aEmployee.lastName}"/>
+				<td th:text="${aEmployee.email}"/>
+				<td>
+					<a th:href="@{/employees/update(id=${aEmployee.employeeId})}"
+					   class="btn">
+						Update
+					</a>
+
+					<a th:href="@{/employees/delete(id=${aEmployee.employeeId})}"
+					   class="btn red"
+					   onClick="if (!(confirm('გსურთ წაშლა?'))) return false">
+						Delete
+					</a>
+
+				</td>
+			</tr>
+			</tbody>
+		</table>
+
+
+
+	</div><!-- ./container -->
+
+
+
+	<div style="height:500px"></div> <!-- del this -->
+
+	<div th:replace="layouts :: footer"></div>
+	</body>
+</html>

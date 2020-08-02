@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head th:replace="layouts :: head"> 
+	</head>
+	
+	<body>
+
+	<div th:replace="layouts :: navigation"></div>
+
+	<div class="container"> <!-- container -->
+		<h4>პროექტების სია</h4>
+		<hr>
+		<a th:href="@{/projects/new}"
+		   class="btn blue">
+			ახალი პროექტი
+		</a>
+		<table class="highlight">
+			<thead>
+			<tr>
+				<th>პროექტის სახელი</th>
+				<th>პროექტის სტატუსი</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr th:each="aProject : ${projects}">
+				<td th:text="${aProject.name}"/>
+				<td th:text="${aProject.stage}"/>
+			</tr>
+			</tbody>
+
+		</table>
+
+
+
+	</div><!-- ./container -->
+
+
+
+	<div style="height:500px"></div> <!-- del this -->
+
+	<div th:replace="layouts:: footer"></div>
+	</body>
+	
+</html>

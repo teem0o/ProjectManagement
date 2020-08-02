@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: header"></head>
+
+	<div th:replace="layouts :: navigation"></div>
+	
+<body>
+
+
+
+<div class="container"> <!-- container -->
+	<h3>პროექტების მართვის პანელი</h3>
+	<hr>
+	<h4>აქტიური პროექტები</h4>
+	<div class="row">
+		<div class="col m8 s12">
+			<table class="highlight">
+				<thead class="thead-dark">
+				<tr>
+					<th> პროექტის სახელი </th>
+					<th> პროექტის ეტაპი </th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr th:each="aProject : ${projectsList}">
+					<td th:text="${aProject.name}"/>
+					<td th:text="${aProject.stage}"/>
+				</tr>
+
+				</tbody>
+
+			</table>
+		</div>
+		<div class="col m4 s12">
+			<canvas id="myPieChart" height="50" width="50"></canvas>
+
+			<script>
+				var chartData = "[[${projectStatusCnt}]]"
+			</script>
+		</div>
+	</div>
+
+	<hr>
+	<h4>თანამშრომლები</h4>
+	<div class="row">
+		<div class="col m8 s12">
+			<table class="highlight">
+				<thead class="thead-dark">
+				<tr>
+					<th> სახელი </th>
+					<th> გვარი </th>
+					<th> პროექტების რაოდ. </th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr th:each="aEmployeeProjectCnt : ${employeesListProjectsCnt}">
+					<td th:text="${aEmployeeProjectCnt.firstName}"/>
+					<td th:text="${aEmployeeProjectCnt.lastName}"/>
+					<td th:text="${aEmployeeProjectCnt.projectCount}"/>
+				</tr>
+
+				</tbody>
+
+			</table>
+		</div>
+	</div>
+
+
+</div><!-- ./container -->
+
+
+
+<div style="height:500px"></div> <!-- del this -->
+<div th:replace="layouts:: footer"></div>
+<script type="text/javascript" th:src="@{js/myChart.js}"></script>
+
+</body>
