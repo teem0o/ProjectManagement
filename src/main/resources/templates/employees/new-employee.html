@@ -18,14 +18,22 @@
 		<div class="input-field">
 			<input type="text" id="name" th:field="${employee.firstName}">
 			<label class="" for="name">სახელი</label>
+			<span style="color:red" th:if="${#fields.hasErrors('firstName')}"
+            				  th:errors="${employee.firstName}">
 		</div>
 		<div class="input-field">
 			<input type="text" id="text" class="validate" th:field="${employee.lastName}">
 			<label class="" for="text">გვარი</label>
+			<span style="color:red" th:if="${#fields.hasErrors('lastName')}"
+            				  th:errors="${employee.lastName}">
+            			</span>
 		</div>
 		<div class="input-field">
 			<input type="email" id="email" th:field="${employee.email}"></input>
 			<label class="" for="email">ფოსტა</label>
+			<span style="color:red" th:if="${#fields.hasErrors('email')}"
+            				  th:errors="${employee.email}">
+            			</span>
 		</div>
 
 		<button class="btn blue" type="submit">შენახვა</button>

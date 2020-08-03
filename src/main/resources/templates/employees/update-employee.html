@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: header"></head>
+
+<body>
+
+<div th:replace="layouts :: navigation"></div>
+
+<br>
+<div class="container"> <!-- container -->
+    <h4>თანამშრომლის დამატება </h4>
+    <hr>
+
+
+    <form th:action="@{/employees/update}" th:object="${employee}" method="POST">
+        <input type="hidden" th:field="${employee.employeeId}"/>
+        <div class="input-field">
+            <input type="text" id="name" th:field="${employee.firstName}">
+            <label class="" for="name">სახელი</label>
+            <span style="color:red" th:if="${#fields.hasErrors('firstName')}"
+                  th:errors="${employee.firstName}">
+        </div>
+        <div class="input-field">
+            <input type="text" id="text" class="validate" th:field="${employee.lastName}">
+            <label class="" for="text">გვარი</label>
+            <span style="color:red" th:if="${#fields.hasErrors('lastName')}"
+                  th:errors="${employee.lastName}">
+            			</span>
+        </div>
+        <div class="input-field">
+            <input type="email" id="email" th:field="${employee.email}"></input>
+            <label class="" for="email">ფოსტა</label>
+            <span style="color:red" th:if="${#fields.hasErrors('email')}"
+                  th:errors="${employee.email}">
+            			</span>
+        </div>
+
+        <button class="btn blue" type="submit">განახსლება</button>
+    </form>
+
+
+
+</div><!-- ./container -->
+
+
+
+<div style="height:500px"></div> <!-- del this -->
+
+<!--Import jQuery before materialize.js-->
+
+<div th:replace="layouts:: footer"></div>
+</body>
+</html>

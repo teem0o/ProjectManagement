@@ -50,6 +50,17 @@ public class EmployeeController {
 		
 		return "redirect:/employees";
 	}
+	//brb
+	@PostMapping("/update")
+	public String updateEmployee(Model model, Employee employee, Errors errors) {
+
+		if(errors.hasErrors())
+			return "employees/update-employee";
+
+		empService.save(employee);
+
+		return "redirect:/employees";
+	}
 	
 	@GetMapping("/update")
 	public String displayEmployeeUpdateForm(@RequestParam("id") long theId, Model model) {
@@ -59,7 +70,7 @@ public class EmployeeController {
 		model.addAttribute("employee", theEmp);
 		
 		
-		return "employees/new-employee";
+		return "employees/update-employee";
 	}
 	
 	@GetMapping("delete")

@@ -11,7 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.jrp.pma.validators.UniqueValue;
 
 @Entity
 public class Employee {
@@ -19,10 +24,15 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="employee_seq")
 	private long employeeId;
-	
 
+	@NotBlank(message="*Must give a first name")
+	@Size(min=2, max=50)
 	private String firstName;
+	@NotBlank(message="*Must give a last name")
 	private String lastName;
+	@NotBlank
+	@Email(message="*Must be a valid email address")
+	@UniqueValue
 	private String email;
 
 	
