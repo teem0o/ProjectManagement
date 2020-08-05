@@ -31,9 +31,9 @@
 		<div class="input-field">
 			<select th:field="${project.stage}">
 				<option value="" disabled selected>Choose your option</option>
-				<option th:value="არდაუწყია"> არ დაუწყია</option>
-				<option th:value="პროცესში"> პროცესში</option>
-				<option th:value="დასრულებული"> დასრულებული</option>
+				<option th:value="NOTSTARTED"> NOTSTARTED</option>
+				<option th:value="INPROGRESS"> INPROGRESS</option>
+				<option th:value="COMPLETED"> COMPLETED</option>
 			</select>
 			<label>აირჩიეთ</label>
 		</div>
