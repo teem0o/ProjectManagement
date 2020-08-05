@@ -15,6 +15,7 @@ import com.jrp.pma.dto.EmployeeProject;
 import com.jrp.pma.entities.Project;
 import com.jrp.pma.services.EmployeeService;
 import com.jrp.pma.services.ProjectService;
+import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class HomeController {
@@ -50,4 +51,5 @@ public class HomeController {
 		return "main/home";
 		
 	}
+
 }

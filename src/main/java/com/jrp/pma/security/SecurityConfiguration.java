@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -22,6 +23,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
 	BCryptPasswordEncoder bCryptEncoder;
+
+	@Autowired
+	AuthenticationSuccessHandler successHandler;
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -38,17 +42,26 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.authorizeRequests()
-//			.antMatchers("/projects/new").hasRole("ADMIN")
-//			.antMatchers("/projects/save").hasRole("ADMIN")
-//			.antMatchers("/employees/new").hasRole("ADMIN")
-//			.antMatchers("/employees/save").hasRole("ADMIN")
+				.antMatchers("/employees/**").hasRole("ADMIN")
+				.antMatchers("/projects/**").hasAnyRole("ADMIN","USER")
+				.antMatchers("/resources/**").permitAll()
+				.antMatchers("/").hasRole("ADMIN")
+				.and()
+				.formLogin()
+				.loginPage("/LoginPage")
+				.loginProcessingUrl("/authenticateTheUser")
+				.successHandler(successHandler)
+				.usernameParameter("username")
+				.passwordParameter("password")
+				.permitAll()
+				.and()
+				.logout().permitAll()
+				.and()
+				.exceptionHandling().accessDeniedPage("/errorpages/error-401");
 
-			.antMatchers("/", "/**").permitAll()
-			.and()
-			.formLogin();
-		
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
+
 
 	}
 	

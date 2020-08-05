@@ -24,7 +24,11 @@ public class UserAccount {
 	private String password;
 
 	private boolean enabled = true;
-	
+
+	private String role;
+
+
+
 	public UserAccount() {
 		
 	}
@@ -68,6 +72,12 @@ public class UserAccount {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
-	
-	
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 }

@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.jrp.pma.entities.Employee;
 import com.jrp.pma.services.EmployeeService;
@@ -47,23 +44,29 @@ public class EmployeeController {
 		
 		// save to the database using an employee crud repository
 		empService.save(employee);
+		//save to user accounts database
+		empService.saveToAccounts(employee);
+
 		
 		return "redirect:/employees";
 	}
-	//brb
-	@PostMapping("/update")
+
+	@RequestMapping("/update")
 	public String updateEmployee(Model model, Employee employee, Errors errors) {
 
+		//NSFW
 		if(errors.hasErrors())
 			return "employees/update-employee";
 
 		empService.save(employee);
+		//save to user accounts database
+		empService.saveToAccounts(employee);
 
 		return "redirect:/employees";
 	}
-	
-	@GetMapping("/update")
-	public String displayEmployeeUpdateForm(@RequestParam("id") long theId, Model model) {
+
+	@RequestMapping("/update/{id}")
+	public String displayEmployeeUpdateForm(@PathVariable("id") long theId, Model model) {
 		
 		Employee theEmp = empService.findByEmployeeId(theId);
 		
@@ -73,8 +76,9 @@ public class EmployeeController {
 		return "employees/update-employee";
 	}
 	
-	@GetMapping("delete")
-	public String deleteEmployee(@RequestParam("id") long theId, Model model) {
+//	@GetMapping("delete")
+	@RequestMapping("/delete/{id}")
+	public String deleteEmployee(@PathVariable("id") long theId, Model model) {
 		Employee theEmp = empService.findByEmployeeId(theId);
 		empService.delete(theEmp);
 		return "redirect:/employees";

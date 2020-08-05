@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head th:replace="layouts :: header"></head>
 
@@ -11,33 +11,50 @@
 	<br>
 
 <div class="container"> <!-- container -->
-	<h4>პროექტის დამატება</h4>
+	<h4 sec:authorize="hasRole('ROLE_ADMIN')">პროექტის დამატება</h4>
+	<h4 sec:authorize="hasRole('ROLE_USER')">პროექტის განახსლება</h4>
+
 	<hr>
 
 
 	<form th:action="@{/projects/save}" th:object="${project}" method="POST">
+		<input type="hidden" th:field="${project.projectId}"/>
 		<div class="input-field">
-			<input type="text" id="name" th:field="*{name}">
+			<input type="text" id="name" th:field="*{name}" sec:authorize="hasRole('ROLE_ADMIN')">
+			<input type="text" id="name" th:field="*{name}" th:readonly="disabled" sec:authorize="hasRole('ROLE_USER')">
 			<label class="" for="name"> სახელი</label>
+			<span style="color:red" th:if="${#fields.hasErrors('name')}"
+				  th:errors="${project.name}">
+            			</span>
 		</div>
 
 		<div class="input-field">
 			<select th:field="${project.stage}">
 				<option value="" disabled selected>Choose your option</option>
-				<option th:value="NOTSTARTED"> არ დაუწყია</option>
-				<option th:value="INPROGRESS"> პროცესში</option>
-				<option th:value="COMPLETED"> დასრულებული</option>
+				<option th:value="არდაუწყია"> არ დაუწყია</option>
+				<option th:value="პროცესში"> პროცესში</option>
+				<option th:value="დასრულებული"> დასრულებული</option>
 			</select>
 			<label>აირჩიეთ</label>
 		</div>
 
 		<div class="input-field">
-			<textarea id="textarea" class="materialize-textarea" th:field="${project.description}"></textarea>
+			<textarea id="textarea" class="materialize-textarea" th:field="${project.description}" sec:authorize="hasRole('ROLE_ADMIN')"></textarea>
+			<textarea id="textarea" class="materialize-textarea" th:field="${project.description} " th:readonly="disabled" sec:authorize="hasRole('ROLE_USER')"></textarea>
 			<label class="" for="textarea">აღწერა</label>
+			<span style="color:red" th:if="${#fields.hasErrors('description')}"
+				  th:errors="${project.description}">
+            			</span>
 		</div>
 
 		<div class="input-field">
-			<select th:field="*{employees}" multiple="">
+			<select th:field="*{employees}" multiple="" sec:authorize="hasRole('ROLE_ADMIN')">
+				<option th:each = "employee : ${allEmployees}"
+						th:value = "${employee.employeeId}"
+						th:text = "${employee.firstName}">
+				</option>
+			</select>
+			<select th:field="*{employees}" multiple="" sec:authorize="hasRole('ROLE_USER')" th:readonly="disabled">
 				<option th:each = "employee : ${allEmployees}"
 						th:value = "${employee.employeeId}"
 						th:text = "${employee.firstName}">
@@ -47,7 +64,7 @@
 		</div>
 
 
-		<div class="row">
+		<div class="row"  sec:authorize="hasRole('ROLE_ADMIN')">
 			<div class="col m6 s12">
 				<div class="input-field">
 					<input id="startdate" type="text" class="datepicker" th:field="${project.startDate}">
@@ -61,12 +78,23 @@
 				</div>
 			</div>
 		</div>
+		<div class="row" th:readonly="disabled" sec:authorize="hasRole('ROLE_USER')">
+			<div class="col m6 s12">
+				<div class="input-field">
+					<input id="startdate" type="text" class="datepicker" th:text="${project.startDate}" disabled>
+					<label class="" for="startdate">დასაწყისი</label>
+				</div>
+			</div>
+			<div class="col m6 s12">
+				<div class="input-field">
+					<input id="enddate" type="text" class="datepicker" th:text="${project.endDate}" disabled>
+					<label class="" for="enddate">დასასრული</label>
+				</div>
+			</div>
+		</div>
 
 
-		<script type="text/javascript">
-			$('#dp3').datepicker();
-			$('#dp4').datepicker();
-		</script>
+
 
 		<button class="btn blue" type="submit">შენახვა</button>
 	</form>

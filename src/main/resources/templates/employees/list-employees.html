@@ -28,12 +28,12 @@
 				<td th:text="${aEmployee.lastName}"/>
 				<td th:text="${aEmployee.email}"/>
 				<td>
-					<a th:href="@{/employees/update(id=${aEmployee.employeeId})}"
+					<a th:href="@{/employees/update/{id}(id=${aEmployee.employeeId})}"
 					   class="btn">
 						Update
 					</a>
 
-					<a th:href="@{/employees/delete(id=${aEmployee.employeeId})}"
+					<a th:href="@{/employees/delete/{id}(id=${aEmployee.employeeId})}"
 					   class="btn red"
 					   onClick="if (!(confirm('გსურთ წაშლა?'))) return false">
 						Delete

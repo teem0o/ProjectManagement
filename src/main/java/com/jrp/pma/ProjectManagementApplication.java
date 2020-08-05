@@ -31,14 +31,14 @@ public class ProjectManagementApplication {
 	
 	
 	
-//	@Bean
-//	CommandLineRunner runner() {
-//
-//		return args -> {
-//
-//			Employee emp1 = new Employee("John", "Warton", "warton@gmail.com");
-//			Employee emp2 = new Employee("Mike", "Lanister", "lanister@gmail.com");
-//			Employee emp3 = new Employee("Steve", "Reeves", "Reeves@gmail.com");
+	@Bean
+	CommandLineRunner runner() {
+
+		return args -> {
+
+			Employee emp1 = new Employee("John", "Warton", "warton@gmail.com");
+			Employee emp2 = new Employee("Mike", "Lanister", "lanister@gmail.com");
+			Employee emp3 = new Employee("Steve", "Reeves", "Reeves@gmail.com");
 //
 //			Employee emp4 = new Employee("Ronald", "Connor", "connor@gmail.com");
 //			Employee emp5 = new Employee("Jim", "Salvator", "Sal@gmail.com");
@@ -79,9 +79,14 @@ public class ProjectManagementApplication {
 //
 //			// save employees in database
 //
+
+
 //			empRepo.save(emp1);
 //			empRepo.save(emp2);
 //			empRepo.save(emp3);
+
+
+
 //			empRepo.save(emp4);
 //			empRepo.save(emp5);
 //			empRepo.save(emp6);
@@ -96,10 +101,10 @@ public class ProjectManagementApplication {
 //			projRepo.save(pro2);
 //			projRepo.save(pro3);
 //			projRepo.save(pro4);
-//
-//
-//		};
-//
-//	}
+
+
+		};
+
+	}
 	
 }

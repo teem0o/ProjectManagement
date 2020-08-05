@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head th:replace="layouts :: header"></head>
 
@@ -11,6 +12,12 @@
 
 
 <div class="container"> <!-- container -->
+	<div class="flow-text">
+		გამარჯობა <span sec:authentication="name"></span>
+		<br>
+		როლი: <span sec:authentication="principal.authorities"></span>
+		<br><br>
+	</div>
 	<h3>პროექტების მართვის პანელი</h3>
 	<hr>
 	<h4>აქტიური პროექტები</h4>
