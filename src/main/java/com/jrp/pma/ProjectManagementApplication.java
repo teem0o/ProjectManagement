@@ -2,6 +2,8 @@ package com.jrp.pma;
 
 import java.util.Arrays;
 
+import com.jrp.pma.dao.UserAccountRepository;
+import com.jrp.pma.entities.UserAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,6 +24,9 @@ public class ProjectManagementApplication {
 	@Autowired
 	ProjectRepository projRepo;
 
+	@Autowired
+	UserAccountRepository userAccRepo;
+
 	
 	
 	public static void main(String[] args) {
@@ -36,9 +41,9 @@ public class ProjectManagementApplication {
 
 		return args -> {
 
-			Employee emp1 = new Employee("John", "Warton", "warton@gmail.com");
-			Employee emp2 = new Employee("Mike", "Lanister", "lanister@gmail.com");
-			Employee emp3 = new Employee("Steve", "Reeves", "Reeves@gmail.com");
+//			Employee emp1 = new Employee("John", "Warton", "warton@gmail.com");
+//			Employee emp2 = new Employee("Mike", "Lanister", "lanister@gmail.com");
+//			Employee emp3 = new Employee("Steve", "Reeves", "Reeves@gmail.com");
 //
 //			Employee emp4 = new Employee("Ronald", "Connor", "connor@gmail.com");
 //			Employee emp5 = new Employee("Jim", "Salvator", "Sal@gmail.com");
@@ -101,6 +106,12 @@ public class ProjectManagementApplication {
 //			projRepo.save(pro2);
 //			projRepo.save(pro3);
 //			projRepo.save(pro4);
+
+			UserAccount t = new UserAccount(10,"temo","temo@gmail.com","$2a$10$nZV4lEoJDyDWpZyXQC.FN.O9azPgiAFpagBPBOrg8TCuT4g5xmhIq",true,"ROLE_ADMIN");
+			UserAccount e = new UserAccount(12,"eka","eka@gmail.com","$2a$10$nZV4lEoJDyDWpZyXQC.FN.O9azPgiAFpagBPBOrg8TCuT4g5xmhIq",true,"ROLE_USER");
+
+			userAccRepo.save(t);
+			userAccRepo.save(e);
 
 
 		};

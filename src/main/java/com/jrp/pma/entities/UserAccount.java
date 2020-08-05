@@ -33,6 +33,15 @@ public class UserAccount {
 		
 	}
 
+	public UserAccount(long userId, String userName, String email, String password, boolean enabled, String role) {
+		this.userId = userId;
+		this.userName = userName;
+		this.email = email;
+		this.password = password;
+		this.enabled = enabled;
+		this.role = role;
+	}
+
 	public long getUserId() {
 		return userId;
 	}
