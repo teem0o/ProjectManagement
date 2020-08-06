@@ -110,8 +110,8 @@ public class ProjectManagementApplication {
 			UserAccount t = new UserAccount(10,"temo","temo@gmail.com","$2a$10$nZV4lEoJDyDWpZyXQC.FN.O9azPgiAFpagBPBOrg8TCuT4g5xmhIq",true,"ROLE_ADMIN");
 			UserAccount e = new UserAccount(12,"eka","eka@gmail.com","$2a$10$nZV4lEoJDyDWpZyXQC.FN.O9azPgiAFpagBPBOrg8TCuT4g5xmhIq",true,"ROLE_USER");
 
-			userAccRepo.save(t);
-			userAccRepo.save(e);
+//			userAccRepo.save(t);
+//			userAccRepo.save(e);
 
 
 		};
