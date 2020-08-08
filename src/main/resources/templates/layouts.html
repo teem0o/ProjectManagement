@@ -39,6 +39,9 @@
 			<li><a th:href="@{/}">მთავარი</a></li>
 			<li><a th:href="@{/employees}">თანამშრომლები</a></li>
 			<li><a th:href="@{/projects}">პროექტები</a></li>
+			<form action="#" th:action="@{/logout}" method="POST">
+				<button class="btn red" type="submit">logout</button>
+			</form>
 		</ul>
 	</div>
 
