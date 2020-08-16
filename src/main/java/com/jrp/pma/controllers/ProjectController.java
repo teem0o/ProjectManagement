@@ -108,7 +108,7 @@ public class ProjectController {
 //
 //	}
 
-	@GetMapping("/update/{id}")
+	@GetMapping("/{id}")
 	public String updateProjectForm(@PathVariable("id") long theId, Model model) {
 
 		Project aProject = proService.findByProjectId(theId);
@@ -118,7 +118,7 @@ public class ProjectController {
 
 		return "projects/new-project";
 	}
-	@RequestMapping("/delete/{id}")
+	@RequestMapping("/{id}")
 	public String deleteProject(@PathVariable("id") long theId, Model model) {
 		Project aProject = proService.findByProjectId(theId);
 		proService.delete(aProject);

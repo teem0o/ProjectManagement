@@ -65,7 +65,7 @@ public class EmployeeController {
 		return "redirect:/employees";
 	}
 
-	@RequestMapping("/update/{id}")
+	@RequestMapping("/{id}")
 	public String displayEmployeeUpdateForm(@PathVariable("id") long theId, Model model) {
 		
 		Employee theEmp = empService.findByEmployeeId(theId);
@@ -77,7 +77,7 @@ public class EmployeeController {
 	}
 	
 //	@GetMapping("delete")
-	@RequestMapping("/delete/{id}")
+	@RequestMapping("/{id}")
 	public String deleteEmployee(@PathVariable("id") long theId, Model model) {
 		Employee theEmp = empService.findByEmployeeId(theId);
 		empService.delete(theEmp);
