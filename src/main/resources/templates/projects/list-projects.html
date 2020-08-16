@@ -31,7 +31,7 @@
 				<td th:text="${aProject.name}"/>
 				<td th:text="${aProject.stage}"/>
 				<td>
-					<a th:href="@{/projects/update/{id}(id=${aProject.projectId})}"
+					<a th:href="@{/projects/{id}(id=${aProject.projectId})}"
 					   class="btn">
 						Update
 					</a>

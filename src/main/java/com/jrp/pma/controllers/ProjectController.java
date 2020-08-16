@@ -118,7 +118,7 @@ public class ProjectController {
 
 		return "projects/new-project";
 	}
-	@RequestMapping("/{id}")
+	@RequestMapping("/delete/{id}")
 	public String deleteProject(@PathVariable("id") long theId, Model model) {
 		Project aProject = proService.findByProjectId(theId);
 		proService.delete(aProject);
