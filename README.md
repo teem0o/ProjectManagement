@@ -9,9 +9,9 @@ Functional Requirements
 
 non-Functional Requirements
 
-*every user must be authorized
-*users with 'user' role are not able to view other users projects.
-*inputed mail must be vlaid
-*length of input mustn't be longer than 50
-*start date must be before endDate
-*input fields can not be blank
+* every user must be authorized
+* users with 'user' role are not able to view other users projects.
+* inputed mail must be vlaid
+* length of input mustn't be longer than 50
+* start date must be before endDate
+* input fields can not be blank
