@@ -9,7 +9,7 @@
 
 	<br>
 <div class="container"> <!-- container -->
-	<h4>თანამშრომლის დამატება </h4>
+	<h4>add employee </h4>
 	<hr>
 
 
@@ -17,26 +17,26 @@
 		<input type="hidden" th:field="${employee.employeeId}"/>
 		<div class="input-field">
 			<input type="text" id="name" th:field="${employee.firstName}">
-			<label class="" for="name">სახელი</label>
+			<label class="" for="name">name</label>
 			<span style="color:red" th:if="${#fields.hasErrors('firstName')}"
             				  th:errors="${employee.firstName}">
 		</div>
 		<div class="input-field">
 			<input type="text" id="text" class="validate" th:field="${employee.lastName}">
-			<label class="" for="text">გვარი</label>
+			<label class="" for="text">last name</label>
 			<span style="color:red" th:if="${#fields.hasErrors('lastName')}"
             				  th:errors="${employee.lastName}">
             			</span>
 		</div>
 		<div class="input-field">
 			<input type="email" id="email" th:field="${employee.email}"></input>
-			<label class="" for="email">ფოსტა</label>
+			<label class="" for="email">mail</label>
 			<span style="color:red" th:if="${#fields.hasErrors('email')}"
             				  th:errors="${employee.email}">
             			</span>
 		</div>
 
-		<button class="btn blue" type="submit">შენახვა</button>
+		<button class="btn blue" type="submit">submit</button>
 	</form>
 
 

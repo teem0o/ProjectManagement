@@ -8,17 +8,17 @@
 	<div th:replace="layouts :: navigation"></div>
 
 	<div class="container"> <!-- container -->
-		<h4>თანამშრომლების სია</h4>
+		<h4>list of employees</h4>
 		<hr>
-		<a th:href="@{/employees/new}" class="btn blue">დამატება</a>
+		<a th:href="@{/employees/new}" class="btn blue">add</a>
 
 		<table class="highlight">
 			<thead>
 			<tr>
-				<th>სახელი</th>
-				<th>გვარი</th>
-				<th>ფოსტა</th>
-				<th>ქმედება</th>
+				<th>name</th>
+				<th>last name</th>
+				<th>mail</th>
+				<th>action</th>
 			</tr>
 			</thead>
 
@@ -35,7 +35,7 @@
 
 					<a th:href="@{/employees/delete/{id}(id=${aEmployee.employeeId})}"
 					   class="btn red"
-					   onClick="if (!(confirm('გსურთ წაშლა?'))) return false">
+					   onClick="if (!(confirm('delete?'))) return false">
 						Delete
 					</a>
 

@@ -12,18 +12,18 @@
 
 <!--	admin-->
 	<div class="container" sec:authorize="hasRole('ROLE_ADMIN')"> <!-- container -->
-		<h4>პროექტების სია</h4>
+		<h4>list of projects</h4>
 		<hr>
 		<a th:href="@{/projects/new}"
 		   class="btn blue">
-			ახალი პროექტი
+			new project
 		</a>
 		<table class="highlight">
 			<thead>
 			<tr>
-				<th>პროექტის სახელი</th>
-				<th>პროექტის სტატუსი</th>
-				<th>ქმედება</th>
+				<th>project name</th>
+				<th>project status</th>
+				<th>action</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -38,7 +38,7 @@
 
 					<a th:href="@{/projects/delete/{id}(id=${aProject.projectId})}" sec:authorize="hasRole('ROLE_ADMIN')"
 					   class="btn red"
-					   onClick="if (!(confirm('გსურთ წაშლა?'))) return false" >
+					   onClick="if (!(confirm('delete?'))) return false" >
 						Delete
 					</a>
 
@@ -53,15 +53,15 @@
 	</div><!-- ./container -->
 <!--user-->
 	<div class="container" sec:authorize="hasRole('ROLE_USER')"> <!-- container -->
-		<h4><span sec:authentication="name"></span>-ს პროექტები</h4>
+		<h4><span sec:authentication="name"></span>-s projects</h4>
 		<hr>
 
 		<table class="highlight">
 			<thead>
 			<tr>
-				<th>პროექტის სახელი</th>
-				<th>პროექტის სტატუსი</th>
-				<th>ქმედება</th>
+				<th>project name</th>
+				<th>project state</th>
+				<th>action</th>
 			</tr>
 			</thead>
 			<tbody>

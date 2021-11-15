@@ -24,9 +24,9 @@
 				<a th:href="@{/projects}" class="brand-logo" sec:authorize="hasRole('ROLE_USER')">Project IO</a>
 				<a href="" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 				<ul class="right hide-on-med-and-down">
-					<li><a th:href="@{/}" sec:authorize="hasRole('ROLE_ADMIN')">მთავარი</a></li>
-					<li><a th:href="@{/employees}" sec:authorize="hasRole('ROLE_ADMIN')">თანამშრომლები</a></li>
-					<li><a th:href="@{/projects}" sec:authorize="hasRole('ROLE_ADMIN')">პროექტები</a></li>
+					<li><a th:href="@{/}" sec:authorize="hasRole('ROLE_ADMIN')">main</a></li>
+					<li><a th:href="@{/employees}" sec:authorize="hasRole('ROLE_ADMIN')">employees</a></li>
+					<li><a th:href="@{/projects}" sec:authorize="hasRole('ROLE_ADMIN')">projects</a></li>
 					<li>
 						<form action="#" th:action="@{/logout}" method="POST">
 							<button class="btn red" type="submit">logout</button>
@@ -36,9 +36,9 @@
 			</div>
 		</nav>
 		<ul class="sidenav" id="mobile-demo" sec:authorize="hasRole('ROLE_ADMIN')">
-			<li><a th:href="@{/}">მთავარი</a></li>
-			<li><a th:href="@{/employees}">თანამშრომლები</a></li>
-			<li><a th:href="@{/projects}">პროექტები</a></li>
+			<li><a th:href="@{/}">main</a></li>
+			<li><a th:href="@{/employees}">employees</a></li>
+			<li><a th:href="@{/projects}">projects</a></li>
 			<form action="#" th:action="@{/logout}" method="POST">
 				<button class="btn red" type="submit">logout</button>
 			</form>

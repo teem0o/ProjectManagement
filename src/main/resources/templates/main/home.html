@@ -13,21 +13,21 @@
 
 <div class="container"> <!-- container -->
 	<div class="flow-text">
-		გამარჯობა <span sec:authentication="name"></span>
+		Hello <span sec:authentication="name"></span>
 		<br>
-		როლი: <span sec:authentication="principal.authorities"></span>
+		Role: <span sec:authentication="principal.authorities"></span>
 		<br><br>
 	</div>
-	<h3>პროექტების მართვის პანელი</h3>
+	<h3>Project management Panel</h3>
 	<hr>
-	<h4>აქტიური პროექტები</h4>
+	<h4>active projects</h4>
 	<div class="row">
 		<div class="col m8 s12">
 			<table class="highlight">
 				<thead class="thead-dark">
 				<tr>
-					<th> პროექტის სახელი </th>
-					<th> პროექტის ეტაპი </th>
+					<th> project name </th>
+					<th> project stage </th>
 				</tr>
 				</thead>
 				<tbody>
@@ -50,15 +50,15 @@
 	</div>
 
 	<hr>
-	<h4>თანამშრომლები</h4>
+	<h4>employees</h4>
 	<div class="row">
 		<div class="col m8 s12">
 			<table class="highlight">
 				<thead class="thead-dark">
 				<tr>
-					<th> სახელი </th>
-					<th> გვარი </th>
-					<th> პროექტების რაოდ. </th>
+					<th> name </th>
+					<th> last name </th>
+					<th> project count  </th>
 				</tr>
 				</thead>
 				<tbody>

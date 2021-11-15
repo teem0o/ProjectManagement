@@ -11,8 +11,8 @@
 	<br>
 
 <div class="container"> <!-- container -->
-	<h4 sec:authorize="hasRole('ROLE_ADMIN')">პროექტის დამატება</h4>
-	<h4 sec:authorize="hasRole('ROLE_USER')">პროექტის განახსლება</h4>
+	<h4 sec:authorize="hasRole('ROLE_ADMIN')">add project</h4>
+	<h4 sec:authorize="hasRole('ROLE_USER')">update projects</h4>
 
 	<hr>
 
@@ -22,7 +22,7 @@
 		<div class="input-field">
 			<input type="text" id="name" th:field="*{name}" sec:authorize="hasRole('ROLE_ADMIN')">
 			<input type="text" id="name" th:field="*{name}" th:readonly="disabled" sec:authorize="hasRole('ROLE_USER')">
-			<label class="" for="name"> სახელი</label>
+			<label class="" for="name"> name</label>
 			<span style="color:red" th:if="${#fields.hasErrors('name')}"
 				  th:errors="${project.name}">
             			</span>
@@ -35,13 +35,13 @@
 				<option th:value="INPROGRESS"> INPROGRESS</option>
 				<option th:value="COMPLETED"> COMPLETED</option>
 			</select>
-			<label>აირჩიეთ</label>
+			<label>select</label>
 		</div>
 
 		<div class="input-field">
 			<textarea id="textarea" class="materialize-textarea" th:field="${project.description}" sec:authorize="hasRole('ROLE_ADMIN')"></textarea>
 			<textarea id="textarea" class="materialize-textarea" th:field="${project.description} " th:readonly="disabled" sec:authorize="hasRole('ROLE_USER')"></textarea>
-			<label class="" for="textarea">აღწერა</label>
+			<label class="" for="textarea">about</label>
 			<span style="color:red" th:if="${#fields.hasErrors('description')}"
 				  th:errors="${project.description}">
             			</span>
@@ -60,7 +60,7 @@
 						th:text = "${employee.firstName}">
 				</option>
 			</select>
-			<label>თანამშრომლები </label>
+			<label>employees </label>
 		</div>
 
 
@@ -68,13 +68,13 @@
 			<div class="col m6 s12">
 				<div class="input-field">
 					<input id="startdate" type="text" class="datepicker" th:field="${project.startDate}">
-					<label class="" for="startdate">დასაწყისი</label>
+					<label class="" for="startdate">start date</label>
 				</div>
 			</div>
 			<div class="col m6 s12">
 				<div class="input-field">
 					<input id="enddate" type="text" class="datepicker" th:field="${project.endDate}">
-					<label class="" for="enddate">დასასრული</label>
+					<label class="" for="enddate">end date</label>
 				</div>
 			</div>
 		</div>
@@ -82,13 +82,13 @@
 			<div class="col m6 s12">
 				<div class="input-field">
 					<input id="startdate" type="text" class="datepicker" th:text="${project.startDate}" disabled>
-					<label class="" for="startdate">დასაწყისი</label>
+					<label class="" for="startdate">start date</label>
 				</div>
 			</div>
 			<div class="col m6 s12">
 				<div class="input-field">
 					<input id="enddate" type="text" class="datepicker" th:text="${project.endDate}" disabled>
-					<label class="" for="enddate">დასასრული</label>
+					<label class="" for="enddate">end date</label>
 				</div>
 			</div>
 		</div>
@@ -96,7 +96,7 @@
 
 
 
-		<button class="btn blue" type="submit">შენახვა</button>
+		<button class="btn blue" type="submit">save</button>
 	</form>
 
 
