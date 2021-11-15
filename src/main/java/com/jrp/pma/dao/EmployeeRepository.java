@@ -1,6 +1,7 @@
 package com.jrp.pma.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -17,7 +18,7 @@ public interface EmployeeRepository extends PagingAndSortingRepository<Employee,
 			"GROUP BY e.first_name, e.last_name ORDER BY 3 DESC")
 	public List<EmployeeProject> employeeProjects();
 
-	public Employee findByEmail(String value);
+	public Optional<Employee> findByEmail(String value);
 
 	public Employee findByEmployeeId(long theId);
 

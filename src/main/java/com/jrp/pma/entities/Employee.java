@@ -35,6 +35,7 @@ public class Employee {
 	@UniqueValue
 	private String email;
 
+//	lombok
 	
 	@ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
 			   fetch = FetchType.LAZY)

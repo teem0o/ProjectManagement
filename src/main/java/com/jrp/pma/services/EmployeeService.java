@@ -1,27 +1,32 @@
 package com.jrp.pma.services;
 
+import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 import com.jrp.pma.dao.UserAccountRepository;
 import com.jrp.pma.entities.UserAccount;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.jrp.pma.dao.EmployeeRepository;
 import com.jrp.pma.dto.EmployeeProject;
 import com.jrp.pma.entities.Employee;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class EmployeeService {
-	
-	@Autowired
-	EmployeeRepository empRepo;
 
-	@Autowired
-	UserAccountRepository userAccountRepo;
-	
-	
+	private final EmployeeRepository empRepo;
+	private final UserAccountRepository userAccountRepo;
+//
+//	public EmployeeService(EmployeeRepository empRepo, UserAccountRepository userAccountRepo) {
+//		this.empRepo = empRepo;
+//		this.userAccountRepo = userAccountRepo;
+//	}
+
+
 	public Employee save(Employee employee) {
 		return empRepo.save(employee);
 	}
@@ -35,17 +40,21 @@ public class EmployeeService {
 		user.setRole("ROLE_USER");
 		user.setUserName(employee.getFirstName());
 
-
+		System.out.println();
 
 		return userAccountRepo.save(user);
 	}
 
 
 
+	@Transactional
 	public Iterable<Employee> getAll() {
 		return empRepo.findAll();
 	}
-
+	@Transactional
+	public Iterable<Employee> getAll(Pageable pageable) {
+		return empRepo.findAll(pageable);
+	}
 
 	public List<EmployeeProject> employeeProjects() {
 		return empRepo.employeeProjects();
@@ -59,6 +68,7 @@ public class EmployeeService {
 
 
 	public void delete(Employee theEmp) {
+//		theEmp.setDeleteDate(LocalDate.now());
 		empRepo.delete(theEmp);
 	}
 

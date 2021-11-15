@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import java.util.Optional;
 
 public class UniqueValidator implements ConstraintValidator<UniqueValue, String> {
 
@@ -19,12 +20,9 @@ public class UniqueValidator implements ConstraintValidator<UniqueValue, String>
         System.out.println("Entered validation method..");
 
 
-        Employee emp = empRepo.findByEmail(value);
+        Optional<Employee> emp = empRepo.findByEmail(value);
 
-        if(emp != null)
-            return false;
-        else
-            return true;
+        return !emp.isPresent();
 
     }
 
